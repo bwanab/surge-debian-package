@@ -1,0 +1,13 @@
+surge-xt-for-rpi (1.4~git20260521-2) unstable; urgency=low
+
+  * Move copyright info to usr/share/doc/surge-xt-for-rpi/copyright.
+  * Move lintian overrides to usr/share/lintian/overrides/surge-xt-for-rpi.
+  * Fix Depends field formatting.
+
+ -- Bill Allen <pb@ballen.fastmail.fm>  Thu, 21 May 2026 14:00:00 +0000
+
+surge-xt-for-rpi (1.4~git20260521-1) unstable; urgency=low
+
+  * Initial Debian packaging for Raspberry Pi (ARM64).
+
+ -- Bill Allen <pb@ballen.fastmail.fm>  Thu, 21 May 2026 12:00:00 +0000

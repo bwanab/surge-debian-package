@@ -1,0 +1,15 @@
+Package: surge-xt-for-rpi
+Version: @VERSION@
+Section: sound
+Priority: optional
+Architecture: arm64
+Installed-Size: @INSTALLED_SIZE@
+Depends: libasound2, libfontconfig1, libfreetype6, libpng16-16, libbrotli1, libexpat1, libstdc++6, libc6
+Maintainer: Bill Allen <pb@ballen.fastmail.fm>
+Homepage: https://surge-synthesizer.github.io
+Description: Surge XT synthesizer (Raspberry Pi build)
+ Surge XT is an open-source hybrid synthesizer with a large patch library.
+ This package provides builds compiled for ARM64/aarch64 hardware.
+ .
+ Includes surge-xt (standalone GUI), surge-xt-cli (headless CLI),
+ and surge-xt-fx (effects processor)

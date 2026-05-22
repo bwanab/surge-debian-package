@@ -1,0 +1,3 @@
+surge-xt-for-rpi: embedded-library *
+surge-xt-for-rpi: hardening-no-pie *
+surge-xt-for-rpi: no-manual-page *

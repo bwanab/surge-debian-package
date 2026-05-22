@@ -1,0 +1,9 @@
+# Generated package directories and .deb files
+surge-xt-for-rpi_*/
+*.deb
+
+# Claude Code internal files
+.claude/
+
+# Backup files
+*~
