@@ -24,7 +24,7 @@ Builds a `.deb` package of [Surge XT](https://surge-synthesizer.github.io) for R
 
 ### 0. Build Surge XT
 
-The surge source tree must be built before running the packaging script. See the [Surge XT build instructions](https://github.com/surge-synthesizer/surge/blob/main/doc/Building.md) for details. The default expected location for the source tree is `../surge`.
+The surge source tree must be built before running the packaging script. See the [Surge XT README](https://github.com/surge-synthesizer/surge) for build instructions. The default expected location for the source tree is `../surge`.
 
 ### 1. Update the changelog
 
