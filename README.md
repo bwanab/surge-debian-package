@@ -1,5 +1,7 @@
 # surge-xt-for-rpi Debian package builder
 
+Source: https://github.com/bwanab/surge-debian-package
+
 Builds a `.deb` package of [Surge XT](https://surge-synthesizer.github.io) for Raspberry Pi (ARM64), from a surge source tree that has already been built. The default source location is `../surge`.
 
 ## Directory layout
