@@ -69,8 +69,10 @@ It will fail with a clear error if either directory is missing (i.e. the build h
 
 The script:
 - Creates the package directory `surge-xt-for-rpi_<version>/`
-- Copies and strips the binaries from the build output
-- Copies data files from the source tree, removing any `.DS_Store` files
+- Copies and strips the standalone binaries to `/usr/bin/`
+- Copies and strips the CLAP plugins (plain shared objects) to `/usr/lib/clap/`
+- Copies the VST3 bundles to `/usr/lib/vst3/` and strips the shared object inside each bundle
+- Copies data files from the source tree to `/usr/share/surge-xt/`, removing any `.DS_Store` files
 - Substitutes `@VERSION@` and `@INSTALLED_SIZE@` into the control file
 - Compresses the changelog
 - Sets ownership to `root:root`
