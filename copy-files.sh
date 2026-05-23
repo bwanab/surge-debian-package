@@ -58,6 +58,7 @@ fi
 PKG="surge-xt-for-rpi"
 PKGDIR="${PKG}_${VERSION}"
 BINDIR="${PKGDIR}/usr/bin"
+LIBDIR="${PKGDIR}/usr/lib"
 TEMPLATE="template"
 
 echo "Building package: ${PKG}_${VERSION} from ${SOURCE}"
@@ -70,6 +71,8 @@ fi
 
 # Create directory structure
 mkdir -p "${BINDIR}"
+mkdir -p "${LIBDIR}/clap"
+mkdir -p "${LIBDIR}/vst3"
 mkdir -p "${PKGDIR}/usr/share/surge-xt"
 mkdir -p "${PKGDIR}/usr/share/doc/${PKG}"
 mkdir -p "${PKGDIR}/usr/share/lintian/overrides"
@@ -82,14 +85,26 @@ find "${PKGDIR}/usr/share/surge-xt" -name '.DS_Store' -delete
 
 # Copy binaries and strip them before chown
 echo "Copying and stripping binaries from ${SRCBINS}..."
-cp "${SRCBINS}/Surge XT"         "${BINDIR}/surge-xt"
-cp "${SRCBINS}/Surge XT Effects" "${BINDIR}/surge-xt-effects"
-cp "${SRCBINS}/surge-xt-cli"     "${BINDIR}/surge-xt-cli"
+cp "${SRCBINS}/Surge XT"              "${BINDIR}/surge-xt"
+cp "${SRCBINS}/Surge XT Effects"      "${BINDIR}/surge-xt-effects"
+cp "${SRCBINS}/surge-xt-cli"          "${BINDIR}/surge-xt-cli"
+cp "${SRCBINS}/Surge XT.clap"         "${LIBDIR}/clap/surge-xt.clap"
+cp "${SRCBINS}/Surge XT Effects.clap" "${LIBDIR}/clap/surge-xt-effects.clap"
+cp -r "${SRCBINS}/Surge XT.vst3"         "${LIBDIR}/vst3/surge-xt.vst3"
+cp -r "${SRCBINS}/Surge XT Effects.vst3" "${LIBDIR}/vst3/surge-xt-effects.vst3"
 
+# Strip standalone binaries
 chmod 755 "${BINDIR}/surge-xt" "${BINDIR}/surge-xt-effects" "${BINDIR}/surge-xt-cli"
 strip --strip-unneeded "${BINDIR}/surge-xt"
 strip --strip-unneeded "${BINDIR}/surge-xt-effects"
 strip --strip-unneeded "${BINDIR}/surge-xt-cli"
+
+# Strip CLAP plugins (plain shared objects)
+strip --strip-unneeded "${LIBDIR}/clap/surge-xt.clap"
+strip --strip-unneeded "${LIBDIR}/clap/surge-xt-effects.clap"
+
+# Strip VST3 plugins (shared objects inside the bundle directory)
+find "${LIBDIR}/vst3" -name '*.so' -exec strip --strip-unneeded {} \;
 
 # Copy static template files
 echo "Copying package metadata from template..."
